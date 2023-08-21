@@ -26,7 +26,7 @@ def create_server_connection(host_name, user_name, user_password):
 
 a="localhost"
 b="root"
-c="Water5959!"
+c="password"
 
 create_server_connection(a, b, c)
 
