@@ -36,48 +36,47 @@ code_codelist = data_codelist[2]
 data_request = requests.get(url_codelist + code_codelist).json()
 
 
-data_output=[]
+dict_indicator={}
 for code in data_request['Structure']['CodeLists']['CodeList']['Code']:
+    #print(code)
     #indicatorの値
     val=code['@value']
     #indicatorの説明text
     txt=code['Description']['#text']
-    data_output.append((val,txt))
-df_indicator = pd.DataFrame(data_output,columns=['indicator','description'])
-
+    dict_indicator[val]=txt
+    #data_output.append((val,txt))
+#df_indicator = pd.DataFrame(data_output,columns=['indicator','description'])
+#print(dict_indicator)
 
 #AMQ
-def get_json_test():
+def get_indicator():
     test_alpha="M"
     print("##### "+test_alpha+" #####")
     api_url = f"http://dataservices.imf.org/REST/SDMX_JSON.svc/CompactData/IFS/{test_alpha}.JP"
     data = requests.get(api_url).json()
     #print(type(data))
-    repn=0
+    #repn=0
+    dict_output={}
     for item in data["CompactData"]["DataSet"]["Series"]:
         #print(type(val))
-        """
-        for key1,val1 in val.items():
-            #print(type(val1))
-            if key1=="DataSet":
-                for key2,val2 in val1.items():
-                    #print(key2)
-                    if key2=="Series":
-                        #print(len(val2))
-                        repn=0
-                        """
-        #for item in elem:
-        repn+=1
-        print("#"*10)
-        print(repn)
-        print(item["@INDICATOR"])
+        val_indicator=item["@INDICATOR"]
+        if dict_indicator[val_indicator]:
+            dict_output[val_indicator]=dict_indicator[val_indicator]
+        
+        #repn+=1
+        #print("#"*10)
+        #print(repn)
+        
+    print(dict_output)
+    df_output=pd.DataFrame(dict_output,index=["a"])
+    df_output.T.to_csv("Indicators_by_Country\\test_list_1.csv")
     #df=pd.DataFrame(data["CompactData"])
     #df=pd.DataFrame(data["CompactData"]["DataSet"]["Series"])
     #print(df.iloc[0,1])
     #print(len(df.iloc[0,1]))
     #df.to_csv("Indicators_by_Country\\test_list.csv")
 
-get_json_test()
+get_indicator()
 
 """
 
