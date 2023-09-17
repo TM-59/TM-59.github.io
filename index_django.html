@@ -2,13 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>HOME PAGE</title>
+<title>DjangoのPAGE</title>
 </head>
 
 <body>
 <section>
     <div>first Section</div>
+    <div><a href="https://www.tmi00advance.com/index.html">HPへ</a></div>
     <div><a href="https://tm-59.github.io/index.html">GitHubページへ</a></div>
+    <div><button onclick="runPythonScript()">Run Python Script</button></div>
     <!--<div><a href="https://tm-59.github.io/TM-59/">URL_test2</a></div>
     <div><a href="https://tm-59.github.io/TM-59/">URL_test2</a></div>-->
 </section>
@@ -19,5 +21,18 @@
     <p id="page_id">ID:index</p>
 </footer>
 
+<script>
+    function runPythonScript() {
+        // Pythonスクリプトを実行
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/cgi-bin/test.py", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send();
+    }
+</script>
 
 </html>
