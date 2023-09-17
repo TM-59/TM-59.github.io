@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テストWebアプリ</title>
+</head>
+<body>
+    <h1>ギャラリー表示してます</h1>
+</body>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<style>
+    .sample-slider{width:70%;}
+    .sample-slider img{width: 100%;}
+</style>
+
+<!--<div class="swiper swiper-container">
+    <div class="swiper-slide"><img src="templates/img/{{list_image}}" /></div>
+    <div class="swiper-slide"><img src="templates/img/{{list_image}}" /></div>
+    <div class="swiper-slide"><img src="templates/img/{{list_image}}" /></div>
+    <div class="swiper-slide"><img src="templates/img/{{list_image}}" /></div>
+</div>-->
+
+
+<div class="swiper sample-slider">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="templates/img/{{list_image}}" /></div>
+        <div class="swiper-slide"><img src="./img/sample2.png" /></div>
+        <div class="swiper-slide"><img src="./img/sample3.png" /></div>
+        <div class="swiper-slide"><img src="./img/sample4.png" /></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+<script>
+    //const swiper = new Swiper('.swiper-container',{
+    //    autoplay:true
+    //});
+
+/*
+    const progressCircle = document.querySelector(".autoplay-progress svg");
+    const progressContent = document.querySelector(".autoplay-progress span");
+    const swiper = new Swiper(".swiper-container", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
+    });
+*/
+
+
+    const swiper = new Swiper('.sample-slider', {
+        loop:true,
+        pagination: {el: '.swiper-pagination',},
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    })
+
+</script>
+
+</html>
