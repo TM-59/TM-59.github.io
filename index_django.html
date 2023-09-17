@@ -11,6 +11,7 @@
     <div><a href="https://www.tmi00advance.com/index.html">HPへ</a></div>
     <div><a href="https://tm-59.github.io/index.html">GitHubページへ</a></div>
     <div><button onclick="runPythonScript()">Run Python Script</button></div>
+    <div><button onclick="runPythonScript2()">Run Python Script（G）</button></div>
     <!--<div><a href="https://tm-59.github.io/TM-59/">URL_test2</a></div>
     <div><a href="https://tm-59.github.io/TM-59/">URL_test2</a></div>-->
 </section>
@@ -33,6 +34,19 @@
         };
         xhr.send();
     }
+
+    function runPythonScript2() {
+        // Pythonスクリプトを実行
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/test.py", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send();
+    }
+
 </script>
 
 </html>
