@@ -1,4 +1,7 @@
-# test.py
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+print("Content-Type: text/html\n")
 
 def main():
     # ここにPythonスクリプトのコードを追加します
